@@ -1,0 +1,51 @@
+funciones (definidas por el usuario)
+	regresa valres primitivos
+
+procedimientos almacenados 
+	metodos almacenacdos en el servidor 
+	regresa consultas
+ 
+triggers 
+	metodos especiales que se ejecutan en eventos de las tablas
+	insert update delete
+
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `suma`(num1 int , num2 int) 
+RETURNS int(11)
+
+BEGIN
+
+	declare res int;
+
+	set res = num1 + num2;
+
+
+RETURN res;
+
+END
+
+ MySQL  localhost:3306  evaluacion_3  SQL > select suma(50,20);
++-------------+
+| suma(10,20) |
++-------------+
+|          30 |
++-------------+
+
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `contar_clientes`() RETURNS int(11)
+
+BEGIN
+	
+	declare cont int;
+
+	select count(*)  into cont from customers;
+
+RETURN cont;
+END
+
+ MySQL  localhost:3306 ssl  northwind  SQL > select cuenta_clientes();
++-------------------+
+| cuenta_clientes() |
++-------------------+
+|                91 |
++-------------------+

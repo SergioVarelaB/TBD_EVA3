@@ -1,0 +1,82 @@
+CREATE DEFINER = CURRENT_USER TRIGGER `evaluacion_3`.`ventas_AFTER_INSERT` AFTER INSERT ON `ventas` FOR EACH ROW 
+BEGIN
+
+declare ganancia double
+ set gana = NEW.totalventa - New.precio_neto
+
+	insert into ganancias
+    
+    values(NEW.idventas, gana);
+
+END
+
+use evaluacion_3;
+
+insert into ventas (total_Venta, precio_neto) values (10000,5000);
+
+
+create table ganacias ( idventas int , ganancia double);
+
+
+
+
+
+use evaluacion_3;
+
+insert into ventas (total_Venta, precio_neto) values (10000,5000);
+
+
+#create table ganacias ( idventas int , ganancia double);
+
+
+insert into ventas (total_Venta, precio_neto) values (100000,50000);
+
+
+select * from ganacias;
+
+
+update ventas set total_venta = 7000
+ 
+	where id_Ventas = 1;
+
+delete from ventas where id_Ventas = 1 ;
+
+
+
+select * from ventas;
+
+
+CREATE DEFINER=`root`@`localhost` TRIGGER `ventas_AFTER_UPDATE` AFTER UPDATE ON `ventas` FOR EACH ROW BEGIN
+
+declare gana double;
+
+    set gana = new.total_venta - new.precio_neto;
+
+    update ganacias
+
+	    set ganancia = gana
+
+    	    where id_ventas = old.id_ventas;
+
+END
+
+
+CREATE DEFINER=`root`@`localhost` TRIGGER `ventas_AFTER_DELETE` AFTER DELETE ON `ventas` FOR EACH ROW BEGIN
+
+	delete from ganacias
+ 
+		where id_ventas = old.id_ventas;
+
+END
+
+CREATE DEFINER=`root`@`localhost` TRIGGER `ventas_AFTER_INSERT` AFTER INSERT ON `ventas` FOR EACH ROW BEGIN
+
+	declare gana double;
+
+	set gana = NEW.total_venta - New.precio_neto;
+
+	insert into ganacias
+    
+    values(NEW.id_ventas, gana);
+
+END
