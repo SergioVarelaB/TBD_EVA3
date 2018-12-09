@@ -1,0 +1,370 @@
+CREATE DEFINER=`root`@`localhost` FUNCTION `sumatoria`(num int) RETURNS int(11)
+BEGIN
+
+	declare sumatoria int;
+
+	set sumatoria = 0;
+
+	suma_loop: loop
+
+	if num > 0 then 
+	
+			
+		set sumatoria = sumatoria + num;
+
+		set num = num -1;
+
+		iterate suma_loop;
+
+	end if;
+
+
+    
+	leave suma_loop;
+
+
+	end loop suma_loop;
+
+RETURN sumatoria;
+
+END
+MySQL  localhost:3306  northwind  SQL > select customerid, companyname, sumatoria(4) as ejemplo from customers;
++------------+--------------------------------------+---------+
+| customerid | companyname                          | ejemplo |
++------------+--------------------------------------+---------+
+| ALFKI      | Alfreds Futterkiste                  |      10 |
+| ANATR      | Ana Trujillo Emparedados y helados   |      10 |
+| ANTON      | Antonio Moreno Taquera               |      10 |
+| AROUT      | Around the Horn                      |      10 |
+| BSBEV      | B's Beverages                        |      10 |
+| BERGS      | Berglunds snabbkp                    |      10 |
+| BLAUS      | Blauer See Delikatessen              |      10 |
+| BOLID      | Blido Comidas preparadas             |      10 |
+| BLONP      | Blondesddsl pre et fils              |      10 |
+| BONAP      | Bon app'                             |      10 |
+| BOTTM      | Bottom-Dollar Markets                |      10 |
+| CACTU      | Cactus Comidas para llevar           |      10 |
+| CENTC      | Centro comercial Moctezuma           |      10 |
+| CHOPS      | Chop-suey Chinese                    |      10 |
+| COMMI      | Comrcio Mineiro                      |      10 |
+| CONSH      | Consolidated Holdings                |      10 |
+| WANDK      | Die Wandernde Kuh                    |      10 |
+| DRACD      | Drachenblut Delikatessen             |      10 |
+| DUMON      | Du monde entier                      |      10 |
+| EASTC      | Eastern Connection                   |      10 |
+| ERNSH      | Ernst Handel                         |      10 |
+| FAMIA      | Familia Arquibaldo                   |      10 |
+| FISSA      | FISSA Fabrica Inter. Salchichas S.A. |      10 |
+| FOLIG      | Folies gourmandes                    |      10 |
+| FOLKO      | Folk och f HB                        |      10 |
+| FRANR      | France restauration                  |      10 |
+| FRANS      | Franchi S.p.A.                       |      10 |
+| FRANK      | Frankenversand                       |      10 |
+| FURIB      | Furia Bacalhau e Frutos do Mar       |      10 |
+| GALED      | Galera del gastrnomo                 |      10 |
+| GODOS      | Godos Cocina Tpica                   |      10 |
+| GOURL      | Gourmet Lanchonetes                  |      10 |
+| GREAL      | Great Lakes Food Market              |      10 |
+| GROSR      | GROSELLA-Restaurante                 |      10 |
+| HANAR      | Hanari Carnes                        |      10 |
+| HILAA      | HILARION-Abastos                     |      10 |
+| HUNGC      | Hungry Coyote Import Store           |      10 |
+| HUNGO      | Hungry Owl All-Night Grocers         |      10 |
+| ISLAT      | Island Trading                       |      10 |
+| Val2       | IT                                   |      10 |
+| VALON      | IT                                   |      10 |
+| KOENE      | Kniglich Essen                       |      10 |
+| LACOR      | La corne d'abondance                 |      10 |
+| LAMAI      | La maison d'Asie                     |      10 |
+| LAUGB      | Laughing Bacchus Wine Cellars        |      10 |
+| LAZYK      | Lazy K Kountry Store                 |      10 |
+| LEHMS      | Lehmanns Marktstand                  |      10 |
+| LETSS      | Let's Stop N Shop                    |      10 |
+| LILAS      | LILA-Supermercado                    |      10 |
+| LINOD      | LINO-Delicateses                     |      10 |
+| LONEP      | Lonesome Pine Restaurant             |      10 |
+| MAGAA      | Magazzini Alimentari Riuniti         |      10 |
+| MAISD      | Maison Dewey                         |      10 |
+| MORGK      | Morgenstern Gesundkost               |      10 |
+| MEREP      | Mre Paillarde                        |      10 |
+| NORTS      | North/South                          |      10 |
+| OCEAN      | Ocano Atlntico Ltda.                 |      10 |
+| OLDWO      | Old World Delicatessen               |      10 |
+| OTTIK      | Ottilies Kseladen                    |      10 |
+| PARIS      | Paris spcialits                      |      10 |
+| PERIC      | Pericles Comidas clsicas             |      10 |
+| PICCO      | Piccolo und mehr                     |      10 |
+| PRINI      | Princesa Isabel Vinhos               |      10 |
+| QUEDE      | Que Delcia                           |      10 |
+| QUEEN      | Queen Cozinha                        |      10 |
+| QUICK      | QUICK-Stop                           |      10 |
+| RANCH      | Rancho grande                        |      10 |
+| RATTC      | Rattlesnake Canyon Grocery           |      10 |
+| REGGC      | Reggiani Caseifici                   |      10 |
+| RICAR      | Ricardo Adocicados                   |      10 |
+| RICSU      | Richter Supermarkt                   |      10 |
+| ROMEY      | Romero y tomillo                     |      10 |
+| SANTG      | Sant Gourmet                         |      10 |
+| SAVEA      | Save-a-lot Markets                   |      10 |
+| SEVES      | Seven Seas Imports                   |      10 |
+| SIMOB      | Simons bistro                        |      10 |
+| SPECD      | Spcialits du monde                   |      10 |
+| SPLIR      | Split Rail Beer & Ale                |      10 |
+| SUPRD      | Suprmes dlices                       |      10 |
+| THEBI      | The Big Cheese                       |      10 |
+| THECR      | The Cracker Box                      |      10 |
+| TOMSP      | Toms Spezialitten                    |      10 |
+| TORTU      | Tortuga Restaurante                  |      10 |
+| TRADH      | Tradio Hipermercados                 |      10 |
+| TRAIH      | Trail's Head Gourmet Provisioners    |      10 |
+| VAFFE      | Vaffeljernet                         |      10 |
+| VICTE      | Victuailles en stock                 |      10 |
+| VINET      | Vins et alcools Chevalier            |      10 |
+| WARTH      | Wartian Herkku                       |      10 |
+| WELLI      | Wellington Importadora               |      10 |
+| WHITC      | White Clover Markets                 |      10 |
+| WILMK      | Wilman Kala                          |      10 |
+| WOLZA      | Wolski  Zajazd                       |      10 |
++------------+--------------------------------------+---------+
+93 rows in set (0.0236 sec)
+
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `cuenta_clientes`(customer_id varchar(5)) RETURNS int(11)
+
+BEGIN
+
+	declare cont int;
+
+	select count(*) into cont
+
+	from orders where customerid = customer_id;
+
+RETURN cont;
+
+END
+
+
+ MySQL  localhost:3306  northwind  SQL > select cuenta_ordenes('WELLI');
++-------------------------+
+| cuenta_ordenes('WELLI') |
++-------------------------+
+|                       9 |
++-------------------------+
+
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `total_ordenes`(customer_id text) RETURNS double
+
+BEGIN
+	declare result double;
+ 
+	select sum(a.unitprice * a.quantity) into result
+
+	from order_details a
+	inner join orders b on a.orderid = b.orderid
+
+	where b.customerid = customer_id;
+
+RETURN result;
+
+END
+
+
+ MySQL  localhost:3306  northwind  SQL > select customerid, companyname, total_ordenes(customerid) from customers;
++------------+--------------------------------------+---------------------------+
+| customerid | companyname                          | total_ordenes(customerid) |
++------------+--------------------------------------+---------------------------+
+| ALFKI      | Alfreds Futterkiste                  |                    4596.2 |
+| ANATR      | Ana Trujillo Emparedados y helados   |                   1402.95 |
+| ANTON      | Antonio Moreno Taquera               |                   7515.35 |
+| AROUT      | Around the Horn                      |                   13806.5 |
+| BSBEV      | B's Beverages                        |                    6089.9 |
+| BERGS      | Berglunds snabbkp                    |                  26968.15 |
+| BLAUS      | Blauer See Delikatessen              |                    3239.8 |
+| BOLID      | Blido Comidas preparadas             |                    5297.8 |
+| BLONP      | Blondesddsl pre et fils              |                     19088 |
+| BONAP      | Bon app'                             |                  23850.95 |
+| BOTTM      | Bottom-Dollar Markets                |                   22607.7 |
+| CACTU      | Cactus Comidas para llevar           |                    1814.8 |
+| CENTC      | Centro comercial Moctezuma           |                     100.8 |
+| CHOPS      | Chop-suey Chinese                    |                   12886.3 |
+| COMMI      | Comrcio Mineiro                      |                   3810.75 |
+| CONSH      | Consolidated Holdings                |                    1719.1 |
+| WANDK      | Die Wandernde Kuh                    |                  10653.85 |
+| DRACD      | Drachenblut Delikatessen             |                   3763.21 |
+| DUMON      | Du monde entier                      |                    1615.9 |
+| EASTC      | Eastern Connection                   |                  15033.66 |
+| ERNSH      | Ernst Handel                         |                 113236.68 |
+| FAMIA      | Familia Arquibaldo                   |                    4438.9 |
+| FISSA      | FISSA Fabrica Inter. Salchichas S.A. |                      NULL |
+| FOLIG      | Folies gourmandes                    |                   11666.9 |
+| FOLKO      | Folk och f HB                        |                  32555.55 |
+| FRANR      | France restauration                  |                   3172.16 |
+| FRANS      | Franchi S.p.A.                       |                    1545.7 |
+| FRANK      | Frankenversand                       |                  28722.71 |
+| FURIB      | Furia Bacalhau e Frutos do Mar       |                   7151.55 |
+| GALED      | Galera del gastrnomo                 |                     836.7 |
+| GODOS      | Godos Cocina Tpica                   |                   11830.1 |
+| GOURL      | Gourmet Lanchonetes                  |                   8702.23 |
+| GREAL      | Great Lakes Food Market              |                  19711.13 |
+| GROSR      | GROSELLA-Restaurante                 |                    1488.7 |
+| HANAR      | Hanari Carnes                        |                  34101.15 |
+| HILAA      | HILARION-Abastos                     |                  23611.58 |
+| HUNGC      | Hungry Coyote Import Store           |                    3063.2 |
+| HUNGO      | Hungry Owl All-Night Grocers         |                  57317.39 |
+| ISLAT      | Island Trading                       |                    6146.3 |
+| Val2       | IT                                   |                      NULL |
+| VALON      | IT                                   |                      NULL |
+| KOENE      | Kniglich Essen                       |                  31745.75 |
+| LACOR      | La corne d'abondance                 |                   1992.05 |
+| LAMAI      | La maison d'Asie                     |                  10272.35 |
+| LAUGB      | Laughing Bacchus Wine Cellars        |                     522.5 |
+| LAZYK      | Lazy K Kountry Store                 |                       357 |
+| LEHMS      | Lehmanns Marktstand                  |                  21282.02 |
+| LETSS      | Let's Stop N Shop                    |                   3490.02 |
+| LILAS      | LILA-Supermercado                    |                  17825.06 |
+| LINOD      | LINO-Delicateses                     |                  17889.55 |
+| LONEP      | Lonesome Pine Restaurant             |                    4258.6 |
+| MAGAA      | Magazzini Alimentari Riuniti         |                   7603.85 |
+| MAISD      | Maison Dewey                         |                  10430.58 |
+| MORGK      | Morgenstern Gesundkost               |                    5042.2 |
+| MEREP      | Mre Paillarde                        |                   32203.9 |
+| NORTS      | North/South                          |                       649 |
+| OCEAN      | Ocano Atlntico Ltda.                 |                    3460.2 |
+| OLDWO      | Old World Delicatessen               |                  16325.15 |
+| OTTIK      | Ottilies Kseladen                    |                   13157.5 |
+| PARIS      | Paris spcialits                      |                      NULL |
+| PERIC      | Pericles Comidas clsicas             |                    4242.2 |
+| PICCO      | Piccolo und mehr                     |                  26259.95 |
+| PRINI      | Princesa Isabel Vinhos               |                    5317.1 |
+| QUEDE      | Que Delcia                           |                   6973.63 |
+| QUEEN      | Queen Cozinha                        |                   30226.1 |
+| QUICK      | QUICK-Stop                           |                 117483.39 |
+| RANCH      | Rancho grande                        |                    2844.1 |
+| RATTC      | Rattlesnake Canyon Grocery           |                   52245.9 |
+| REGGC      | Reggiani Caseifici                   |                    7555.6 |
+| RICAR      | Ricardo Adocicados                   |                   12924.4 |
+| RICSU      | Richter Supermarkt                   |                   20033.2 |
+| ROMEY      | Romero y tomillo                     |                   1467.29 |
+| SANTG      | Sant Gourmet                         |                   5735.15 |
+| SAVEA      | Save-a-lot Markets                   |                 115673.39 |
+| SEVES      | Seven Seas Imports                   |                  17172.05 |
+| SIMOB      | Simons bistro                        |                  18138.45 |
+| SPECD      | Spcialits du monde                   |                   2423.35 |
+| SPLIR      | Split Rail Beer & Ale                |                   12489.7 |
+| SUPRD      | Suprmes dlices                       |                   24704.4 |
+| THEBI      | The Big Cheese                       |                      3361 |
+| THECR      | The Cracker Box                      |                   1947.24 |
+| TOMSP      | Toms Spezialitten                    |                      4954 |
+| TORTU      | Tortuga Restaurante                  |                  10812.15 |
+| TRADH      | Tradio Hipermercados                 |                   7310.62 |
+| TRAIH      | Trail's Head Gourmet Provisioners    |                    1571.2 |
+| VAFFE      | Vaffeljernet                         |                   16643.8 |
+| VICTE      | Victuailles en stock                 |                    9937.1 |
+| VINET      | Vins et alcools Chevalier            |                      1480 |
+| WARTH      | Wartian Herkku                       |                   16617.1 |
+| WELLI      | Wellington Importadora               |                    6480.7 |
+| WHITC      | White Clover Markets                 |                  29073.45 |
+| WILMK      | Wilman Kala                          |                   3161.35 |
+| WOLZA      | Wolski  Zajazd                       |                   3531.95 |
++------------+--------------------------------------+---------------------------+
+93 rows in set (0.0072 sec) 
+
+ MySQL  localhost:3306  northwind  SQL > select customerid, companyname, total_ordenes(customerid) as total from customers;
++------------+--------------------------------------+-----------+
+| customerid | companyname                          | total     |
++------------+--------------------------------------+-----------+
+| ALFKI      | Alfreds Futterkiste                  |    4596.2 |
+| ANATR      | Ana Trujillo Emparedados y helados   |   1402.95 |
+| ANTON      | Antonio Moreno Taquera               |   7515.35 |
+| AROUT      | Around the Horn                      |   13806.5 |
+| BSBEV      | B's Beverages                        |    6089.9 |
+| BERGS      | Berglunds snabbkp                    |  26968.15 |
+| BLAUS      | Blauer See Delikatessen              |    3239.8 |
+| BOLID      | Blido Comidas preparadas             |    5297.8 |
+| BLONP      | Blondesddsl pre et fils              |     19088 |
+| BONAP      | Bon app'                             |  23850.95 |
+| BOTTM      | Bottom-Dollar Markets                |   22607.7 |
+| CACTU      | Cactus Comidas para llevar           |    1814.8 |
+| CENTC      | Centro comercial Moctezuma           |     100.8 |
+| CHOPS      | Chop-suey Chinese                    |   12886.3 |
+| COMMI      | Comrcio Mineiro                      |   3810.75 |
+| CONSH      | Consolidated Holdings                |    1719.1 |
+| WANDK      | Die Wandernde Kuh                    |  10653.85 |
+| DRACD      | Drachenblut Delikatessen             |   3763.21 |
+| DUMON      | Du monde entier                      |    1615.9 |
+| EASTC      | Eastern Connection                   |  15033.66 |
+| ERNSH      | Ernst Handel                         | 113236.68 |
+| FAMIA      | Familia Arquibaldo                   |    4438.9 |
+| FISSA      | FISSA Fabrica Inter. Salchichas S.A. |      NULL |
+| FOLIG      | Folies gourmandes                    |   11666.9 |
+| FOLKO      | Folk och f HB                        |  32555.55 |
+| FRANR      | France restauration                  |   3172.16 |
+| FRANS      | Franchi S.p.A.                       |    1545.7 |
+| FRANK      | Frankenversand                       |  28722.71 |
+| FURIB      | Furia Bacalhau e Frutos do Mar       |   7151.55 |
+| GALED      | Galera del gastrnomo                 |     836.7 |
+| GODOS      | Godos Cocina Tpica                   |   11830.1 |
+| GOURL      | Gourmet Lanchonetes                  |   8702.23 |
+| GREAL      | Great Lakes Food Market              |  19711.13 |
+| GROSR      | GROSELLA-Restaurante                 |    1488.7 |
+| HANAR      | Hanari Carnes                        |  34101.15 |
+| HILAA      | HILARION-Abastos                     |  23611.58 |
+| HUNGC      | Hungry Coyote Import Store           |    3063.2 |
+| HUNGO      | Hungry Owl All-Night Grocers         |  57317.39 |
+| ISLAT      | Island Trading                       |    6146.3 |
+| Val2       | IT                                   |      NULL |
+| VALON      | IT                                   |      NULL |
+| KOENE      | Kniglich Essen                       |  31745.75 |
+| LACOR      | La corne d'abondance                 |   1992.05 |
+| LAMAI      | La maison d'Asie                     |  10272.35 |
+| LAUGB      | Laughing Bacchus Wine Cellars        |     522.5 |
+| LAZYK      | Lazy K Kountry Store                 |       357 |
+| LEHMS      | Lehmanns Marktstand                  |  21282.02 |
+| LETSS      | Let's Stop N Shop                    |   3490.02 |
+| LILAS      | LILA-Supermercado                    |  17825.06 |
+| LINOD      | LINO-Delicateses                     |  17889.55 |
+| LONEP      | Lonesome Pine Restaurant             |    4258.6 |
+| MAGAA      | Magazzini Alimentari Riuniti         |   7603.85 |
+| MAISD      | Maison Dewey                         |  10430.58 |
+| MORGK      | Morgenstern Gesundkost               |    5042.2 |
+| MEREP      | Mre Paillarde                        |   32203.9 |
+| NORTS      | North/South                          |       649 |
+| OCEAN      | Ocano Atlntico Ltda.                 |    3460.2 |
+| OLDWO      | Old World Delicatessen               |  16325.15 |
+| OTTIK      | Ottilies Kseladen                    |   13157.5 |
+| PARIS      | Paris spcialits                      |      NULL |
+| PERIC      | Pericles Comidas clsicas             |    4242.2 |
+| PICCO      | Piccolo und mehr                     |  26259.95 |
+| PRINI      | Princesa Isabel Vinhos               |    5317.1 |
+| QUEDE      | Que Delcia                           |   6973.63 |
+| QUEEN      | Queen Cozinha                        |   30226.1 |
+| QUICK      | QUICK-Stop                           | 117483.39 |
+| RANCH      | Rancho grande                        |    2844.1 |
+| RATTC      | Rattlesnake Canyon Grocery           |   52245.9 |
+| REGGC      | Reggiani Caseifici                   |    7555.6 |
+| RICAR      | Ricardo Adocicados                   |   12924.4 |
+| RICSU      | Richter Supermarkt                   |   20033.2 |
+| ROMEY      | Romero y tomillo                     |   1467.29 |
+| SANTG      | Sant Gourmet                         |   5735.15 |
+| SAVEA      | Save-a-lot Markets                   | 115673.39 |
+| SEVES      | Seven Seas Imports                   |  17172.05 |
+| SIMOB      | Simons bistro                        |  18138.45 |
+| SPECD      | Spcialits du monde                   |   2423.35 |
+| SPLIR      | Split Rail Beer & Ale                |   12489.7 |
+| SUPRD      | Suprmes dlices                       |   24704.4 |
+| THEBI      | The Big Cheese                       |      3361 |
+| THECR      | The Cracker Box                      |   1947.24 |
+| TOMSP      | Toms Spezialitten                    |      4954 |
+| TORTU      | Tortuga Restaurante                  |  10812.15 |
+| TRADH      | Tradio Hipermercados                 |   7310.62 |
+| TRAIH      | Trail's Head Gourmet Provisioners    |    1571.2 |
+| VAFFE      | Vaffeljernet                         |   16643.8 |
+| VICTE      | Victuailles en stock                 |    9937.1 |
+| VINET      | Vins et alcools Chevalier            |      1480 |
+| WARTH      | Wartian Herkku                       |   16617.1 |
+| WELLI      | Wellington Importadora               |    6480.7 |
+| WHITC      | White Clover Markets                 |  29073.45 |
+| WILMK      | Wilman Kala                          |   3161.35 |
+| WOLZA      | Wolski  Zajazd                       |   3531.95 |
++------------+--------------------------------------+-----------+
+93 rows in set (0.0063 sec)

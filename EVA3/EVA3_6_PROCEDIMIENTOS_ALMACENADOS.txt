@@ -1,0 +1,83 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `conteo_clientes`(out cont int )
+
+BEGIN
+
+	select count(*) into cont
+
+	from customers;
+
+END
+
+
+ MySQL  localhost:3306 ssl  northwind  SQL > call conteo_clientes(@conteo);
+Query OK, 1 row affected (0.0207 sec)
+
+ MySQL  localhost:3306 ssl  northwind  SQL > select @conteo
+                                         ... ;
++---------+
+| @conteo |
++---------+
+|      91 |
++---------+
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `conteo_clientes_filtro`(in letra text, out conteo int)
+
+BEGIN
+
+    select count(*) into conteo
+    from customers
+
+    where companyname like concat(letra,'%');
+
+END
+
+
+ MySQL  localhost:3306 ssl  northwind  SQL > call conteo_clientes_filtro('A',@conteo);
+Query OK, 1 row affected (0.0170 sec)
+
+ MySQL  localhost:3306 ssl  northwind  SQL > select @conteo;
++---------+
+| @conteo |
++---------+
+|       4 |
++---------+
+1 row in set (0.0003 sec)
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `agregar_region`(in region text)
+
+BEGIN
+
+	declare clave int;
+
+	
+    select max(regionId) into clave from region;
+
+    
+    set clave = clave+1;
+
+    
+    insert into region values(clave, region);
+
+
+END
+
+
+ MySQL  localhost:3306 ssl  northwind  SQL > call agregar_region('Temosachic');
+Query OK, 1 row affected (0.0118 sec)
+
+
+
+ MySQL  localhost:3306 ssl  northwind  SQL > select * from region;
++----------+-------------------+
+| RegionID | RegionDescription |
++----------+-------------------+
+|        1 | Eastern           |
+|        2 | Western           |
+|        3 | Northern          |
+|        4 | Southern          |
+|        5 | Temosachic        |
++----------+-------------------+
+5 rows in set (0.0005 sec)
+
+
