@@ -1,7 +1,66 @@
 cursores 
 
+CREATE DEFINER=`root`@`localhost` FUNCTION `contar_clientes_cursor`() RETURNS int(11)
 
- MySQL  localhost:3306 ssl  northwind  SQL > select contar_clientes_cursor();
+BEGIN
+
+	declare cont int;
+
+	declare b_txt text;
+
+	#variable booleana de control
+	declare fin_cursor int default false;
+	#cuando llegueos al final, cambiar a true
+
+	#consulta select
+
+	declare cursor_cliente cursor for
+
+		SELECT customerid FROM customers;
+
+	#manejador (handler) para la variable booleana
+
+    
+    declare continue handler for not found set fin_cursor = true;
+
+    
+	#usar cursos
+    open cursor_cliente;
+
+	set cont = 0;
+
+	#usamos un ciclo para recorrerlo
+
+	ciclo_cursor: loop
+
+		#equivalente de iterate
+
+	        fetch cursor_cliente into b_txt;
+
+	        #al llegar al final se prodce la excepcion
+
+	        #not found, cambiamos la varbale fin_cursor a true
+
+	        if fin_cursor then
+
+			leave ciclo_cursor;
+
+		else 
+
+			set cont =  cont +  1;
+
+		end if;
+    end loop;
+
+    
+    close cursor_cliente;
+
+RETURN cont;
+
+END
+
+MySQL  localhost:3306 ssl  northwind  SQL > select contar_clientes_cursor();
+
 +--------------------------+
 | contar_clientes_cursor() |
 +--------------------------+
